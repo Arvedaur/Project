@@ -4,7 +4,7 @@ Spyder Editor
 
 This is a temporary script file.
 """
-
+import mysql
 class defination:
     def __init__(self,SP_name,Adress,Con_PM,SCADA_PM,turbine_quantity,loopq):
         """
@@ -19,6 +19,7 @@ class defination:
         self._loopq=loopq
         self._type=[]
         self._licences={}
+        connect=
     def Scada_type(self)    :
         if self._turbine_quantity >11 :
             self._type='VOB'    
@@ -37,14 +38,18 @@ class defination:
     def licences(self):
         while True:
             try:
-                modbus=(int(input('Please kindly choose if there is Elspec or Bachmann Meter'))
-                snmp=(int(input('Do you need to see the status of network devices'))
-            return modbus,snmp
-                pass
-            except Exception as e:
-                raise
-            else:
-                pass
+                modbus=int(input('Please kindly choose if there is Elspec or Bachmann Meter : '))
+                snmp=int(input('Do you need to see the status of network devices: '))
+                Ab=int(input("Do you need to send commands from Allen Bradley:"))
+                excel=int(input("Do you need to send commands Excel: "))
+                vobcl=int(input("Do you need extra VOB Client Licenses: "))
+                lic={'modbus':modbus,'snmp':snmp,'Allen Bradbey':Ab,'Excel':excel,
+                     "VOB Client":vobcl}
+                order=dict(lic)
+                print(order)
+                print(lic)
+                break
+
             finally:
                 print('This is the final of the software quantities of the modbus licence is {0}, snmp is {1}'.format(modbus,snmp))
                 pass
