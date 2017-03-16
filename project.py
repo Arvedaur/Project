@@ -4,8 +4,10 @@ Spyder Editor
 
 This is a temporary script file.
 """
-import mysql
-class defination:
+import os
+# from pprint import pprint
+import pymysql.cursors
+class info:
     def __init__(self,SP_name,Adress,Con_PM,SCADA_PM,turbine_quantity,loopq):
         """
         This software is intended for SCADA PM application automation
@@ -19,7 +21,20 @@ class defination:
         self._loopq=loopq
         self._type=[]
         self._licences={}
-        connect=
+        self.connection = pymysql.connect(host='localhost',
+                             user='root',
+                             password='root',
+                             db='django',
+                             charset='utf8mb4',
+                             cursorclass=pymysql.cursors.DictCursor)
+        self._var=self.__dict__
+
+        for x,y in enumerate(self._var):
+            print(x,y)
+
+
+        print(type(self.connection))
+
     def Scada_type(self)    :
         if self._turbine_quantity >11 :
             self._type='VOB'    
@@ -27,6 +42,17 @@ class defination:
         else:
             self._type='VOC'
             return self._type
+
+
+    def Databaseshowdown(self):
+        with self.connection.cursor() as cursor:
+            # Read a single record
+            sql = "SELECT * FROM `blog_item`"
+            cursor.execute(sql,)
+            result = cursor.fetchone()
+            print((result)
+
+
     def network(self):
         print ("Number of the SFP modules are {0}".format((self._loopq)))
         Communication=[]
@@ -45,8 +71,8 @@ class defination:
                 vobcl=int(input("Do you need extra VOB Client Licenses: "))
                 lic={'modbus':modbus,'snmp':snmp,'Allen Bradbey':Ab,'Excel':excel,
                      "VOB Client":vobcl}
-                order=dict(lic)
-                print(order)
+                order=dict
+                print(self.__dict__)
                 print(lic)
                 break
 
